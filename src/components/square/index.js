@@ -3,10 +3,10 @@ import classNames from 'classnames'
 
 export default React.createClass({
     render(){
-        const { children } = this.props
+        const { children, onClick } = this.props
         const className = classNames("box", {"empty": children === null})
         return (
-            <div className={className}>
+            <div className={className} onClick={onClick}>
                 <div>{children}</div>
             </div>
         )
