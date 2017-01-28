@@ -1,4 +1,4 @@
-import { Record, List, Map } from 'immutable'
+import { Record, List, Map, Range } from 'immutable'
 
 const initialState = Record({
     list:List([
@@ -40,6 +40,20 @@ initialState.prototype.whoCanMove = function(){
         canMove = canMove.push("RIGHT")
     }
     return canMove
+}
+
+initialState.prototype.resize = function(size){
+    let newList = List()
+    for (let i = 1; i < size+1; i++){
+        if(i==size){
+            newList = newList.push(Range(size*(i-1)+1, size*i+1).toList().set(size-1,null))
+        } else {
+            newList = newList.push(Range(size*(i-1)+1, size*i+1).toList())
+        }
+    }
+    return this
+        .set('list', newList)
+        .set('nullPosition', Map({x:size-1,y:size-1}))
 }
 
 export default initialState

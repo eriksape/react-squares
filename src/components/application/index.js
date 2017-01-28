@@ -1,7 +1,8 @@
 import { connect } from 'react-redux'
 import Component from './component'
 import {
-    move
+    move,
+    resize
 } from './../../reducers/squares/actions'
 
 const mapStateToProps = (state, ownProps) =>  ({
@@ -42,6 +43,10 @@ const mapDispatchToProps = (dispatch, ownProps) => ({
             }
 
         }
+    },
+    resize: event => {
+        const value = parseInt(event.target.value)
+        dispatch(resize(value))
     }
 })
 

@@ -1,6 +1,7 @@
 import InitialState from './initialState'
 import {
-    MOVE
+    MOVE,
+    RESIZE
 } from './constants'
 
 const initialState = new InitialState()
@@ -18,6 +19,8 @@ export default (state=initialState, action) => {
                 .setIn(['list', y, x], value)
                 .setIn(['list', payload.y, payload.x], null)
                 .renew();
+        case RESIZE:
+            return state.resize(payload)
         default:
             return state
     }
