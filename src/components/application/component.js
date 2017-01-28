@@ -2,13 +2,16 @@ import React from 'react'
 import Square from './../square'
 
 export default class extends React.Component{
+    componentDidMount(){
+        document.body.addEventListener('keyup', this.props.onKeyUp)
+    }
     render(){
         const { squares, onClick, resize } = this.props
         return(
             <div>
                 <br/>
                 <label>&nbsp;&nbsp;&nbsp;Size of the square</label>
-                <select onChange={resize}>
+                <select defaultValue="3" onChange={resize}>
                     <option value="2">2x2</option>
                     <option value="3">3x3</option>
                     <option value="4">4x4</option>

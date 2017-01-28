@@ -1,7 +1,8 @@
 import InitialState from './initialState'
 import {
     MOVE,
-    RESIZE
+    RESIZE,
+    KEYEVENT
 } from './constants'
 
 const initialState = new InitialState()
@@ -21,6 +22,8 @@ export default (state=initialState, action) => {
                 .renew();
         case RESIZE:
             return state.resize(payload)
+        case KEYEVENT:
+            return state.onKeyUp(payload, x, y).renew()
         default:
             return state
     }
