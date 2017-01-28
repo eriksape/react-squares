@@ -1,3 +1,7 @@
 import { combineReducers } from 'redux'
 
-export default combineReducers({})
+import squares from './squares'
+
+export default combineReducers({
+    squares
+})
